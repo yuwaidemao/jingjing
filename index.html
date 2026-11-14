@@ -61,7 +61,7 @@ body{font-family:'Microsoft YaHei','PingFang SC',system-ui,sans-serif;background
 <div class="page-header">
   <div class="label">📖 点击单词即可朗读</div>
   <h1>婧婧 单词朗读</h1>
-  <div class="sub">6个分类 · 共17个单词 · 点击朗读 · 慢速练习</div>
+  <div class="sub">1个分类 · 共3个单词 · 点击朗读 · 慢速练习</div>
 </div>
 <div class="search-wrap">
   <span class="search-icon">🔍</span>
@@ -89,8 +89,8 @@ body{font-family:'Microsoft YaHei','PingFang SC',system-ui,sans-serif;background
 <div class="search-results" id="searchResults"></div>
 </div>
 <script>
-const catMeta={"c0": {"label": "图1", "color": "#2B6CB0", "bg": "#ebf4ff"}, "c1": {"label": "图2", "color": "#6B46C1", "bg": "#f0ebfa"}, "c2": {"label": "图3", "color": "#276749", "bg": "#e6f4ed"}, "c3": {"label": "图4", "color": "#C05621", "bg": "#fdf0e6"}, "c4": {"label": "图5", "color": "#97266D", "bg": "#fce4f0"}, "c5": {"label": "图6", "color": "#B7791F", "bg": "#fef8e6"}};
-const words={"c0": [{"word": "dad", "ph": "/dæd/", "mn": "爸爸", "ic": "👨", "full": ""}, {"word": "easy", "ph": "/ˈiː.zi/", "mn": "容易的", "ic": "😊", "full": ""}, {"word": "juice", "ph": "/dʒuːs/", "mn": "果汁", "ic": "🧃", "full": ""}, {"word": "hi", "ph": "/haɪ/", "mn": "你好", "ic": "👋", "full": ""}, {"word": "we", "ph": "/wiː/", "mn": "我们", "ic": "👥", "full": ""}], "c1": [{"word": "hi", "ph": "/haɪ/", "mn": "你好", "ic": "👋", "full": ""}, {"word": "au", "ph": "/ˌeɪ ˈjuː/", "mn": "天文单位", "ic": "🔭", "full": "astronomical unit"}, {"word": "jam", "ph": "/dʒæm/", "mn": "果酱", "ic": "🍓", "full": ""}, {"word": "Jan", "ph": "/dʒæn/", "mn": "一月", "ic": "📅", "full": "January"}, {"word": "kk", "ph": "/ˌkeɪ ˈkeɪ/", "mn": "好的；行", "ic": "👌", "full": "okay"}], "c2": [{"word": "lilies", "ph": "/ˈlɪl.iz/", "mn": "百合花", "ic": "🌸", "full": ""}, {"word": "look", "ph": "/lʊk/", "mn": "看", "ic": "👀", "full": ""}, {"word": "hi", "ph": "/haɪ/", "mn": "你好", "ic": "👋", "full": ""}, {"word": "lie", "ph": "/laɪ/", "mn": "躺；平躺", "ic": "🛌", "full": ""}], "c3": [{"word": "tnubatlil", "ph": "", "mn": "", "ic": "📖", "full": ""}], "c4": [{"word": "wcrchlandcxpretelont", "ph": "", "mn": "", "ic": "📖", "full": ""}], "c5": [{"word": "hue", "ph": "/hjuː/", "mn": "色调；色彩", "ic": "🎨", "full": ""}]};
+const catMeta={"c0": {"label": "图1", "color": "#2B6CB0", "bg": "#ebf4ff"}};
+const words={"c0": [{"word": "hi", "ph": "/haɪ/", "mn": "嗨；你好", "ic": "👋", "full": ""}, {"word": "in", "ph": "/ɪn/", "mn": "在……里面；在……内", "ic": "📥", "full": ""}, {"word": "we", "ph": "/wiː/", "mn": "我们", "ic": "👥", "full": ""}]};
 const anims=['animation:bounce 0.8s infinite','animation:spin 1s linear infinite','animation:pulse 0.7s infinite','animation:float 1.2s infinite','animation:shake 0.5s infinite','animation:wave 0.8s infinite','animation:swing 1s infinite'];
 let currentCat=Object.keys(catMeta)[0],currentWord=null,animTimer=null;
 function playWord(rate){if(!currentWord)return;const speakText=currentWord.full||currentWord.word;const au=new Audio('https://dict.youdao.com/dictvoice?audio='+encodeURIComponent(speakText)+'&type=1');au.playbackRate=rate;au.play().catch(()=>{if('speechSynthesis' in window){const u=new SpeechSynthesisUtterance(speakText);u.lang='en-US';u.rate=rate;speechSynthesis.speak(u);}});}
